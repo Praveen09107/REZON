@@ -1,0 +1,45 @@
+﻿# Secrets
+.env
+*.key
+*.pem
+
+# Firmware build
+firmware/build/
+firmware/managed_components/
+firmware/.cache/
+firmware/sdkconfig
+firmware/sdkconfig.old
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/.env.production
+
+# Training data and model artifacts (large files)
+training/data/raw/
+training/data/processed/
+training/data/held_out/
+training/models/
+*.tflite
+*.h5
+*.pb
+
+# Local MLOps volumes
+local-mlops/mlflow/
+local-mlops/.env
+local-mlops/scripts/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp

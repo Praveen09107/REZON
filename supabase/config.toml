@@ -1,0 +1,13 @@
+﻿project_id = "rezon"
+
+[api]
+port = 54321
+
+[db]
+port = 54322
+
+[studio]
+port = 54323
+
+[storage]
+file_size_limit = "50MiB"
