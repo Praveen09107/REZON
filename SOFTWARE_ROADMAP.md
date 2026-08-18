@@ -10,7 +10,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 17: Safety Chain Monitor** - Build the state-machine visualization for the hardware relay and safety overrides.
 
 ## Phase B: Frontend Analytics & Management
-- [ ] **Session 18: Analytics & Model Drift** - Build historical distribution charts and drift metrics for the IDNN model.
+- [x] **Session 18: Analytics & Model Drift** - Build historical distribution charts and drift metrics for the IDNN model.
 - [ ] **Session 19: Since-Calibration & Digest** - Build the weekly reporting views and post-calibration comparison tools.
 - [ ] **Session 20: Threshold Sandbox** - Build the interactive client-side threshold adjustment sandbox (simulating ML logic in the browser).
 - [ ] **Session 21: Trust Audit** - Build the static documentation-as-a-feature page detailing the safety mechanisms.
