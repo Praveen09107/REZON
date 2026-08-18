@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 19 (Since-Calibration & Digest) COMPLETE.** Next: Session 20 (Threshold Sandbox).
+**Session 20 (Threshold Sandbox) COMPLETE.** Next: Session 21 (Trust Audit).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 19)
+2026-08-18 (End of Session 20)
