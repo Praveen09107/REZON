@@ -29,7 +29,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 32: Grafana** - Initialize the local Grafana dashboards pointing to TimescaleDB.
 
 ## Phase D: Cloud & Mock Testing
-- [ ] **Session 33: Cloud Hardening** - Finalize Supabase Edge functions, RLS policies, and Database Webhooks.
+- [x] **Session 33: Cloud Hardening** - Finalize Supabase Edge functions, RLS policies, and Database Webhooks.
 - [ ] **Session 34-37 (Software Aspects):** - Mock telemetry streams via Python to simulate a live hardware burn-in, testing the entire Next.js and MLOps stack end-to-end.
 
 ---
