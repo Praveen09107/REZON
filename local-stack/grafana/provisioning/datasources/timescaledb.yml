@@ -1,0 +1,20 @@
+apiVersion: 1
+datasources:
+  - name: RezonTimescaleDB
+    type: postgres
+    access: proxy
+    url: timescaledb:5432   # internal Docker network name, per
+                              # Session 29's compose service name —
+                              # not localhost, since Grafana reaches
+                              # it via the shared rezon-internal network
+    database: rezon
+    user: rezon
+    secureJsonData:
+      password: ${TIMESCALE_PASSWORD}
+    jsonData:
+      sslmode: disable   # internal Docker network only, per ADD §16 —
+                           # not exposed beyond it, so this is an
+                           # accepted, deliberate simplification, not
+                           # an oversight
+      postgresVersion: 1600
+      timescaledb: true

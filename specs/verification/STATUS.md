@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 31 (Scheduled Scripting) COMPLETE.** Next: Session 32 (Grafana).
+**Session 32 (Grafana) COMPLETE.** Next: Phase D (Cloud & Mock Testing).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 31)
+2026-08-18 (End of Session 32)

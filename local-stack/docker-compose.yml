@@ -57,6 +57,8 @@ services:
                                   # this explicitly as part of its scope
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/etc/grafana/dashboards:ro
     networks:
       - rezon-internal
 

@@ -1,0 +1,52 @@
+{
+  "title": "REZON Operational",
+  "panels": [
+    {
+      "title": "Fused score — 7 days",
+      "type": "timeseries",
+      "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
+      "targets": [{
+        "rawSql": "SELECT period_start AS time, avg_fused_score FROM telemetry_hourly WHERE $__timeFilter(period_start) ORDER BY period_start",
+        "format": "time_series"
+      }]
+    },
+    {
+      "title": "Per-modality average — 7 days",
+      "type": "timeseries",
+      "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
+      "targets": [{
+        "rawSql": "SELECT period_start AS time, avg_audio_score, avg_vibration_score, avg_env_score, avg_gas_score, avg_current_score FROM telemetry_hourly WHERE $__timeFilter(period_start) ORDER BY period_start",
+        "format": "time_series"
+      }]
+    },
+    {
+      "title": "Drift status — current",
+      "type": "table",
+      "gridPos": {"x": 0, "y": 8, "w": 8, "h": 6},
+      "targets": [{
+        "rawSql": "SELECT modality, psi_value, status, checked_at FROM drift_status ORDER BY modality",
+        "format": "table"
+      }]
+    },
+    {
+      "title": "Model registry history",
+      "type": "table",
+      "gridPos": {"x": 8, "y": 8, "w": 8, "h": 6},
+      "targets": [{
+        "rawSql": "SELECT version, held_out_auc, status, created_at FROM model_registry ORDER BY created_at DESC",
+        "format": "table"
+      }]
+    },
+    {
+      "title": "Event count per day",
+      "type": "barchart",
+      "gridPos": {"x": 16, "y": 8, "w": 8, "h": 6},
+      "targets": [{
+        "rawSql": "SELECT period_start AS time, sample_count FROM telemetry_hourly WHERE $__timeFilter(period_start) ORDER BY period_start",
+        "format": "time_series"
+      }]
+    }
+  ],
+  "time": {"from": "now-7d", "to": "now"},
+  "refresh": "1m"
+}
