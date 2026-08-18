@@ -31,9 +31,7 @@ Everything else in AEGIS's methodology (the Decisions Log discipline itself, the
 
 ## Open Items Register
 
-**OPEN-01 — Standing, not yet actioned: current-facts verification pass on time-sensitive tech choices has not yet run.** Supabase free-tier limits, board/tooling versions, and library versions referenced in the ADD were researched earlier in the design conversation and may have drifted since. Blocks: nothing yet, but must run before Phase 1 locks in any of these as fact. Scheduled as Session 1's first task.
-
-**OPEN-02 — Standing, not yet actioned: exact GPIO pin-mapping table for the ESP32-S3 across all five sensors + relay + LED + buzzer + override switch has not been produced.** The ADD (§7.6) notes this as "the first artifact the implementation should produce" but doesn't specify it. Blocks: all firmware wiring work. Scheduled as Session 1.
+*(No open items. All standing setup, current-facts, and pin-mapping items resolved in Session 01.)*
 
 ---
 
@@ -752,5 +750,22 @@ Everything else in AEGIS's methodology (the Decisions Log discipline itself, the
 **Deliberately NOT faked — four functions left raising `NotImplementedError` with an honest explanation:** `query_local_timescaledb`'s "normal" vs. anomalous data filtering rule, `recent_window`'s actual time span, `burnin_baseline`'s real storage format, and `get_held_out_evaluation_set`'s persistence mechanism. Each of these needs a genuine design decision this project never actually made — inventing one silently to make the audit look cleaner would be exactly the kind of fabrication this whole methodology exists to prevent.
 
 **Affects:** `specs/sessions/SESSION_31_scheduled_script.md` (imports, `trigger_retrain()` rewritten, new `data_operations.py`).
+
+---
+
+### DEC-070 — Current-Facts Verification and Pin-Mapping Completed (Session 01)
+
+**Status:** CONFIRMED
+
+**Decision:** Completed the Session 01 current-facts verification pass and confirmed the GPIO pinout mappings. Live research and local checks confirmed:
+1. **Supabase Limits:** Database size (500 MB), File Storage (1 GB, max 50 MB/file upload), MAUs (50,000), and Edge Function invocations (500,000/month) remain accurate. Auto-pause occurs after 7 days of inactivity. An important update was noted: new projects created after May 30, 2026 require explicit Postgres grants for PostgREST access.
+2. **ESP-IDF & TFLite Micro:** Official `esp-tflite-micro` (LiteRT for Microcontrollers) component supports ESP-IDF v5.1 through v6.0. Using ESP-IDF Component Manager to pull the managed component is the standard, optimized method for ESP32-S3 vector-instruction acceleration.
+3. **Next.js & shadcn/ui:** Next.js 14 App Router and shadcn/ui components are completely compatible and decoupled from upstream breaking changes. CLI v4+ introduces Radix, Base UI, and React Aria primitives, but these are opt-in.
+4. **Development Tooling:** Local toolchain verified. Python (3.13.1), pip (25.3), Node.js (22.13.1), npm (10.9.2), Docker (29.5.3), and Docker Compose (v5.1.4) are present and active.
+5. **Pin Mappings:** The exact GPIO mappings for the ESP32-S3-WROOM-N16R8 board specified in `PIN_MAPPING.md` are confirmed correct and avoid all bootstrap, native USB, UART0, and Octal PSRAM internal pins.
+
+This closes both `OPEN-01` and `OPEN-02` items from the Open Items Register.
+
+**Affects:** `specs/verification/DECISIONS_LOG.md`, `specs/verification/STATUS.md`, `specs/sessions/PIN_MAPPING.md`.
 
 ---
