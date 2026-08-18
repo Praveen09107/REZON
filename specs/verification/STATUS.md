@@ -4,10 +4,12 @@
 ---
 
 ## Phase
-**Session 01 (Environment Setup & Pin Mapping) COMPLETE.** Next: Session 02 (Hardware Wiring & Assembly).
+**Session 10 (Frontend Design System) COMPLETE.** Next: Session 11 (Frontend Layout & Data Plumbing).
+(Hardware sessions 02-09 deferred).
 
 ## What's actually built
-Repository initialized on local Git. Complete monorepo directory scaffolding created with baseline configs (firmware configurations, custom partition tables, Supabase schema migrations, Docker stacks). Current-facts verified (Supabase, ESP-IDF, Node.js, Python), and ESP32-S3 GPIO pin-mapping documented and locked.
+Repository initialized on local Git. Complete monorepo directory scaffolding created. Current-facts verified, GPIO pin-mapping documented.
+**Frontend:** Next.js (App Router) + shadcn/ui bootstrapped with Tailwind CSS v4. REZON dark "command center" design tokens integrated into `globals.css`.
 
 ## ALL PHASES COMPLETE (79 files). A requested full critical audit (post-completion) found and fixed two MORE significant issues: DEC-068 and DEC-069. All 37 session specs and technical docs are ready for execution.
 
@@ -25,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 01)
+2026-08-18 (End of Session 10)

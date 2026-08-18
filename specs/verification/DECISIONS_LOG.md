@@ -769,3 +769,15 @@ This closes both `OPEN-01` and `OPEN-02` items from the Open Items Register.
 **Affects:** `specs/verification/DECISIONS_LOG.md`, `specs/verification/STATUS.md`, `specs/sessions/PIN_MAPPING.md`.
 
 ---
+
+### DEC-071 — Frontend Design System Migrated to Tailwind CSS v4 (Session 10)
+
+**Status:** CONFIRMED
+
+**Decision:** During Session 10's initialization of the Next.js frontend, `shadcn/ui` correctly detected and initialized with Tailwind CSS v4 (the new 2026 standard for Next.js). Since Tailwind v4 eliminates `tailwind.config.ts` in favor of CSS-native configuration via the `@theme` directive, the spec's original File 2 (`tailwind.config.ts`) was deliberately bypassed.
+Instead, all REZON-specific custom colors (the dark "command center" design tokens from `05_FRONTEND_TECHNICAL_SPEC.md` §2) were directly injected into `frontend/app/globals.css` using the `@theme inline` block and standard CSS custom properties in `:root`. 
+Additionally, the `scoreToColorToken` and `scoreColorClass` helper functions were centralized into a single `frontend/lib/score-color.ts` file rather than living in the non-existent tailwind config.
+
+**Affects:** `frontend/app/globals.css`, `frontend/lib/score-color.ts`. (Deviates from `SESSION_10_design_system.md`'s File 2).
+
+---
