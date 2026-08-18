@@ -7,7 +7,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 14: Home (Digital Twin)** - Build the main dashboard featuring real-time sensor gauges, system status, and machine visualization.
 - [x] **Session 15: Sensor Streams & Timeline** - Build the high-frequency line charts (Recharts) for real-time `telemetry` visualization.
 - [x] **Session 16: Incidents** - Build the anomaly event list and detailed narrative breakdown views.
-- [ ] **Session 17: Safety Chain Monitor** - Build the state-machine visualization for the hardware relay and safety overrides.
+- [x] **Session 17: Safety Chain Monitor** - Build the state-machine visualization for the hardware relay and safety overrides.
 
 ## Phase B: Frontend Analytics & Management
 - [ ] **Session 18: Analytics & Model Drift** - Build historical distribution charts and drift metrics for the IDNN model.
