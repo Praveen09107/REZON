@@ -1,0 +1,69 @@
+version: "3.9"
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: rezon-timescaledb
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: rezon
+      POSTGRES_USER: rezon
+      POSTGRES_PASSWORD: ${TIMESCALE_PASSWORD}
+    ports:
+      - "5433:5432"   # non-default host port — avoids colliding with
+                        # any other local Postgres instance
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+      - ./timescaledb/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rezon"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - rezon-internal   # NOT exposed beyond localhost/Tailscale — per
+                           # ADD §16's security design, re-verified here
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: rezon-mlflow
+    restart: unless-stopped
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    environment:
+      - BACKEND_STORE_URI=postgresql://rezon:${TIMESCALE_PASSWORD}@timescaledb:5432/rezon
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri postgresql://rezon:${TIMESCALE_PASSWORD}@timescaledb:5432/rezon
+    ports:
+      - "127.0.0.1:5000:5000"   # bound to localhost only — Tailscale
+                                  # access happens via the host's own
+                                  # Tailscale interface, not a Docker
+                                  # port publish to 0.0.0.0
+    networks:
+      - rezon-internal
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: rezon-grafana
+    restart: unless-stopped
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+    ports:
+      - "127.0.0.1:3001:3000"   # same localhost-only binding —
+                                  # Session 33 (cloud hardening) revisits
+                                  # this explicitly as part of its scope
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - rezon-internal
+
+volumes:
+  timescale_data:
+  grafana_data:
+
+networks:
+  rezon-internal:
+    driver: bridge

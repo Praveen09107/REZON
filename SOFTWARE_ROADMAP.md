@@ -23,7 +23,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 28: Frontend Verification** - End-to-end linting, build verification, and strict type checking of the complete frontend.
 
 ## Phase C: Local MLOps Infrastructure
-- [ ] **Session 29: Docker & TimescaleDB** - Scaffold the local TimescaleDB instance for hypertable analytics via `docker-compose`.
+- [x] **Session 29: Docker & TimescaleDB** - Scaffold the local TimescaleDB instance for hypertable analytics via `docker-compose`.
 - [ ] **Session 30: MLflow & Evidently** - Set up the local model registry and data drift evaluation environment.
 - [ ] **Session 31: Scheduled Scripting** - Finalize the local Python daemon for data syncing, model retraining, and Supabase interaction.
 - [ ] **Session 32: Grafana** - Initialize the local Grafana dashboards pointing to TimescaleDB.
