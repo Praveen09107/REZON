@@ -781,3 +781,13 @@ Additionally, the `scoreToColorToken` and `scoreColorClass` helper functions wer
 **Affects:** `frontend/app/globals.css`, `frontend/lib/score-color.ts`. (Deviates from `SESSION_10_design_system.md`'s File 2).
 
 ---
+
+### DEC-072 — Next.js 16.3 Middleware to Proxy Transition (Session 11)
+
+**Status:** CONFIRMED
+
+**Decision:** During Session 11 (Architecture & Auth), the Next.js build failed with a deprecation warning indicating that `middleware.ts` is deprecated in Next.js 16 in favor of `proxy.ts`. We successfully migrated `middleware.ts` to `proxy.ts` using the `@next/codemod` tool. The route guarding logic remains identical to the spec. Additionally, dummy variables for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` were provided via `.env.local` to allow the Next.js static prerender to pass during the build step.
+
+**Affects:** `frontend/proxy.ts` (renamed from `middleware.ts`), `frontend/.env.local`.
+
+---
