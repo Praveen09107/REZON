@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 22 (Device & Calibration) COMPLETE.** Next: Session 23 (Deployments).
+**Session 23 (Deployments) COMPLETE.** Next: Session 24 (Notifications & Access).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 22)
+2026-08-18 (End of Session 23)
