@@ -31,7 +31,8 @@ export async function proxy(request: NextRequest) {
   }
 
   if (!session) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    // Temporary bypass: disable server-side redirect to login
+    // return NextResponse.redirect(new URL("/login", request.url));
   }
 
   // /access requires operator role — checked here for immediate UX

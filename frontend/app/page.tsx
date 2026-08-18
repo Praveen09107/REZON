@@ -33,17 +33,30 @@ export default function HomePage() {
 
   return (
     <ResilienceWrapper lastUpdateMs={lastUpdateMs} loading={!connected && data === null}>
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
-        <RoomVisualization telemetry={data} />
-        <div className="flex flex-col gap-4">
-          <div className="rounded-xl border border-border bg-surface p-5">
-            <div className="text-xs text-text-2">Fused anomaly score</div>
-            <div className="text-3xl font-semibold text-calm">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-white tracking-tight text-glow mb-2">Command Center</h1>
+        <p className="text-text-2">Real-time fusion engine & hardware diagnostics.</p>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+        <div className="glass glass-hover rounded-2xl p-6 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <RoomVisualization telemetry={data} />
+        </div>
+        <div className="flex flex-col gap-6">
+          <div className="glass glass-hover rounded-2xl p-6 animate-float flex flex-col justify-center items-center text-center">
+            <div className="text-sm font-medium text-text-2 uppercase tracking-widest mb-2">Fused Anomaly Score</div>
+            <div className="text-6xl font-bold text-calm text-glow">
               {data?.fused_score.toFixed(2) ?? "—"}
             </div>
           </div>
-          <ConfidenceStrip telemetry={data} />
-          <MachineHealthCard telemetry={data} />
+          <div className="glass glass-hover rounded-2xl p-6">
+            <ConfidenceStrip telemetry={data} />
+          </div>
+          <div className="glass glass-hover rounded-2xl p-6">
+            <MachineHealthCard telemetry={data} />
+          </div>
         </div>
       </div>
     </ResilienceWrapper>

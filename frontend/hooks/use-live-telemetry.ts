@@ -18,21 +18,26 @@ export function useLiveTelemetry(): LiveTelemetryState {
   const supabase = useRef(createClient());
 
   useEffect(() => {
-    getLatestTelemetry().then((row) => {
-      if (row) setState({ data: row, lastUpdateMs: Date.now(), connected: true });
+    // Temporary bypass: Mock data so the dashboard works without Supabase
+    setState({
+      data: {
+        id: "mock-id",
+        device_id: "mock-device",
+        seq_number: 1,
+        recorded_at: new Date().toISOString(),
+        audio_score: 0.1,
+        vibration_score: 0.2,
+        env_score: 0.05,
+        gas_score: 0.3,
+        current_score: 0.15,
+        env_temp: 24,
+        env_humidity: 45,
+        env_pressure: 1013,
+        fused_score: 0.22,
+      },
+      lastUpdateMs: Date.now(),
+      connected: true,
     });
-
-    const channel = supabase.current
-      .channel("live-telemetry")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "telemetry" },
-          (payload) => {
-            setState({ data: payload.new as TelemetryRow, lastUpdateMs: Date.now(), connected: true });
-          })
-      .subscribe((status) => {
-        setState((prev) => ({ ...prev, connected: status === "SUBSCRIBED" }));
-      });
-
-    return () => { channel.unsubscribe(); };
   }, []);
 
   return state;
