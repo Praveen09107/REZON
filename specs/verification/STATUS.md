@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 14 (Home Digital Twin) COMPLETE.** Next: Session 15 (Sensor Streams & Timeline).
+**Session 15 (Sensor Streams & Timeline) COMPLETE.** Next: Session 16 (Incidents).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 14)
+2026-08-18 (End of Session 15)
