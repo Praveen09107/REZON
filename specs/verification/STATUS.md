@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 30 (MLflow & Evidently) COMPLETE.** Next: Session 31 (Scheduled Scripting).
+**Session 31 (Scheduled Scripting) COMPLETE.** Next: Session 32 (Grafana).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 30)
+2026-08-18 (End of Session 31)
