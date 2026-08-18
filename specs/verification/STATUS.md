@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 27 (Resilience & Responsive Retrofit) COMPLETE.** Next: Session 28 (Frontend Verification).
+**Session 28 (Frontend Verification) COMPLETE.** Next: Phase C (Local MLOps).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 27)
+2026-08-18 (End of Session 28)
