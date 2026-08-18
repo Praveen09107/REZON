@@ -3,7 +3,7 @@
 This document outlines the deferred-hardware execution plan. We are completing all software, cloud, and frontend infrastructure first. Hardware, firmware, and embedded ML tasks (Sessions 02-09) are deferred until this roadmap is complete.
 
 ## Phase A: Frontend Data Layer & Core Dashboards
-- [ ] **Session 13: Data State Layer** - Integrate `@tanstack/react-query`, set up QueryClientProvider, and build reusable data hooks for Supabase.
+- [x] **Session 13: Data State Layer** - Integrate `@tanstack/react-query`, set up QueryClientProvider, and build reusable data hooks for Supabase.
 - [ ] **Session 14: Home (Digital Twin)** - Build the main dashboard featuring real-time sensor gauges, system status, and machine visualization.
 - [ ] **Session 15: Sensor Streams & Timeline** - Build the high-frequency line charts (Recharts) for real-time `telemetry` visualization.
 - [ ] **Session 16: Incidents** - Build the anomaly event list and detailed narrative breakdown views.
