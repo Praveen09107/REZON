@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 10 (Frontend Design System) COMPLETE.** Next: Session 11 (Frontend Layout & Data Plumbing).
+**Session 10 (Frontend Design System) COMPLETE.** Next: Session 11 (Architecture & Auth).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
