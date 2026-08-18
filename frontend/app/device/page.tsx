@@ -21,7 +21,7 @@ export default function DevicePage() {
 
   return (
     <ResilienceWrapper lastUpdateMs={dataUpdatedAt} loading={isLoading}>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="rounded-xl border border-border bg-surface p-5">
           <h3 className="mb-3 text-sm font-medium text-text">Device health — REZON-01</h3>
           <div className="space-y-2 text-sm">

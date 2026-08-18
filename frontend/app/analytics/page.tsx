@@ -26,7 +26,7 @@ export default function AnalyticsPage() {
 
   return (
     <ResilienceWrapper lastUpdateMs={dataUpdatedAt} loading={isLoading}>
-      <div className="mb-5 grid grid-cols-4 gap-4">
+      <div className="mb-5 grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="rounded-xl border border-border bg-surface p-4">
           <div className="text-xs text-text-2">Avg fused score (7d)</div>
           <div className="text-2xl font-semibold text-calm">{avgOverall.toFixed(2)}</div>

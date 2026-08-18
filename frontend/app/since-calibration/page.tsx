@@ -25,7 +25,7 @@ export default function SinceCalibrationPage() {
       {!preCalibration || !current ? (
         <div className="text-text-2">Not enough model history yet — this page becomes meaningful after Session 34's calibration pass.</div>
       ) : (
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="rounded-xl border border-border bg-surface p-5">
             <div className="text-xs text-text-2">Pre-calibration ({preCalibration.version})</div>
             <div className="text-2xl font-semibold text-text-2">{preCalibration.held_out_auc.toFixed(3)}</div>

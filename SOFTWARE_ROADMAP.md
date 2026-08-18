@@ -19,7 +19,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 24: Notifications & Access** - Build operator-only settings for RBAC and alert preferences.
 - [x] **Session 25: Settings & Help** - Build the general user settings and system help documentation.
 - [x] **Session 26: Public Status Page** - Build the `/status` route (unauthenticated) querying aggregated telemetry summaries.
-- [ ] **Session 27: Resilience & Responsive Retrofit** - Final polish of empty states, error boundaries, and mobile responsiveness.
+- [x] **Session 27: Resilience & Responsive Retrofit** - Final polish of empty states, error boundaries, and mobile responsiveness.
 - [ ] **Session 28: Frontend Verification** - End-to-end linting, build verification, and strict type checking of the complete frontend.
 
 ## Phase C: Local MLOps Infrastructure

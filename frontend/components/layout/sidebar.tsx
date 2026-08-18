@@ -40,15 +40,15 @@ export function Sidebar() {
   const isOperator = useIsOperator();
 
   return (
-    <aside className="w-56 shrink-0 border-r border-border bg-surface p-3">
+    <aside className="w-14 md:w-56 shrink-0 border-r border-border bg-surface p-3 overflow-hidden">
       <div className="mb-5 flex items-center gap-2 px-2 py-1.5 text-lg font-semibold">
-        <span className="h-2.5 w-2.5 rounded-full bg-calm shadow-[0_0_10px_var(--calm)]" />
-        REZON
+        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-calm shadow-[0_0_10px_var(--calm)]" />
+        <span className="hidden md:inline">REZON</span>
       </div>
       {NAV_GROUPS.map((group) => (
         <div key={group.label || "utility"}>
           {group.label && (
-            <div className="px-2 pb-1.5 pt-3 text-[10.5px] uppercase tracking-wide text-text-3">
+            <div className="hidden md:block px-2 pb-1.5 pt-3 text-[10.5px] uppercase tracking-wide text-text-3">
               {group.label}
             </div>
           )}
@@ -66,7 +66,8 @@ export function Sidebar() {
                     : "text-text-2 hover:bg-surface-2 hover:text-text"
                 }`}
               >
-                <span>{item.icon}</span>{item.label}
+                <span className="shrink-0">{item.icon}</span>
+                <span className="hidden md:inline">{item.label}</span>
               </Link>
             ))}
         </div>

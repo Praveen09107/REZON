@@ -32,6 +32,14 @@ export default function SafetyChainPage() {
   const lastWasActuation = lastEvent?.event_type === "actuation";
   const lastWasSuppressed = lastEvent?.event_type?.startsWith("suppressed");
 
+  if (!connected && !telemetry) {
+    return (
+      <div className="rounded-xl border border-border bg-surface p-6 text-center text-sm text-text-2">
+        Waiting for live telemetry to establish the current safety-chain state.
+      </div>
+    );
+  }
+
   return (
     <ResilienceWrapper lastUpdateMs={lastUpdateMs} loading={!connected}>
       <div className="rounded-2xl border border-border bg-surface p-9">

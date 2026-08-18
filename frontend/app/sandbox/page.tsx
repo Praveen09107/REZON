@@ -47,7 +47,7 @@ export default function SandboxPage() {
 
   return (
     <ResilienceWrapper lastUpdateMs={dataUpdatedAt} loading={isLoading}>
-      <div className="grid grid-cols-[280px_1fr] gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-5">
         <div className="rounded-xl border border-border bg-surface p-4">
           <div className="mb-3 text-xs uppercase tracking-wide text-text-2">Hypothetical thresholds</div>
           <Slider label="Alert threshold" value={thresholds.alertThreshold}
@@ -62,7 +62,7 @@ export default function SandboxPage() {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-border bg-surface p-4">
             <div className="mb-2 text-xs text-text-2">Actual (real thresholds)</div>
             <div className="text-2xl font-semibold text-text">{actualSummary.hypotheticalActuationCandidates}</div>
