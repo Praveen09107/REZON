@@ -4,7 +4,7 @@
 ---
 
 ## Phase
-**Session 18 (Analytics & Model Drift) COMPLETE.** Next: Session 19 (Since-Calibration & Digest).
+**Session 19 (Since-Calibration & Digest) COMPLETE.** Next: Session 20 (Threshold Sandbox).
 (Hardware sessions 02-09 deferred).
 
 ## What's actually built
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 18)
+2026-08-18 (End of Session 19)
