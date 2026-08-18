@@ -13,7 +13,7 @@ This document outlines the deferred-hardware execution plan. We are completing a
 - [x] **Session 18: Analytics & Model Drift** - Build historical distribution charts and drift metrics for the IDNN model.
 - [x] **Session 19: Since-Calibration & Digest** - Build the weekly reporting views and post-calibration comparison tools.
 - [x] **Session 20: Threshold Sandbox** - Build the interactive client-side threshold adjustment sandbox (simulating ML logic in the browser).
-- [ ] **Session 21: Trust Audit** - Build the static documentation-as-a-feature page detailing the safety mechanisms.
+- [x] **Session 21: Trust Audit** - Build the static documentation-as-a-feature page detailing the safety mechanisms.
 - [ ] **Session 22: Device & Calibration** - Build device management and sensor baseline configuration pages.
 - [ ] **Session 23: Deployments** - Build the Over-The-Air (OTA) firmware update history and rollback interface.
 - [ ] **Session 24: Notifications & Access** - Build operator-only settings for RBAC and alert preferences.
