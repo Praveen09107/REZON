@@ -48,3 +48,9 @@ venv/
 .DS_Store
 Thumbs.db
 *.swp
+
+# Internal documentation, specs & developer agent configs
+specs/
+handbook/
+docs/
+.claude/
