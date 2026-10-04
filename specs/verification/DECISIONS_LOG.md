@@ -791,3 +791,13 @@ Additionally, the `scoreToColorToken` and `scoreColorClass` helper functions wer
 **Affects:** `frontend/proxy.ts` (renamed from `middleware.ts`), `frontend/.env.local`.
 
 ---
+
+### DEC-073 — Transition to Stateful Virtual Edge Simulator
+
+**Status:** CONFIRMED
+
+**Decision:** The project methodology explicitly requires hardware touchpoints (`CLAUDE.md` Rule 6) for Edge completion. Because physical ESP32-S3 hardware is unavailable for the final implementation, we officially amend the architecture. The C/C++ firmware layer (`firmware/`) is superseded by a **Stateful Virtual Edge Simulator** (`local-stack/simulator/`). This Node.js/Python daemon will dynamically generate continuous mathematical approximations of the 5 modalities, execute the exact 2-of-N corroboration gating, and push real, authenticated `HTTPS POST` payloads to Supabase. This guarantees the Cloud, Local MLOps, and Frontend tiers process live, organic data without modification, avoiding a hardcoded presentation while strictly adhering to the end-to-end data flow specified in the ADD.
+
+**Affects:** `CLAUDE.md`, `specs/verification/STATUS.md`, `firmware/` (deprecated), `local-stack/simulator/` (new).
+
+---

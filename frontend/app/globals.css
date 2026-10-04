@@ -146,4 +146,12 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

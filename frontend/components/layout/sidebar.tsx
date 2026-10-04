@@ -2,36 +2,39 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useIsOperator } from "@/lib/auth-context";
+import { 
+  Globe, Activity, AlertOctagon, ShieldAlert, Clock, 
+  LineChart, Workflow, History, GitCompare, FileText, CheckCircle2,
+  Box, Settings2, Rocket, Bell, Shield, Settings, HelpCircle, Sparkles
+} from "lucide-react";
 
-// Exact route list from Frontend Spec §3 — re-verified against the
-// live document before writing, zone grouping matches the elevation
-// vision's sitemap exactly.
 const NAV_GROUPS = [
-  { label: "Monitor", items: [
-    { href: "/", label: "Home", icon: "◉" },
-    { href: "/streams", label: "Sensor streams", icon: "∿" },
-    { href: "/incidents", label: "Incidents", icon: "⚠" },
-    { href: "/safety-chain", label: "Safety chain", icon: "⛓" },
-    { href: "/timeline", label: "Activity timeline", icon: "◷" },
+  { label: "Fleet Command", items: [
+    { href: "/", label: "Global Overview", icon: Globe },
+    { href: "/streams", label: "Live Diagnostics", icon: Activity },
+    { href: "/incidents", label: "Triage & RCA", icon: AlertOctagon },
+    { href: "/safety-chain", label: "Safety Chain", icon: ShieldAlert },
+    { href: "/timeline", label: "Audit Timeline", icon: Clock },
   ]},
-  { label: "Analyze", items: [
-    { href: "/analytics", label: "Analytics", icon: "◔" },
-    { href: "/model", label: "Model & drift", icon: "◈" },
-    { href: "/since-calibration", label: "Since calibration", icon: "⇄" },
-    { href: "/sandbox", label: "Threshold sandbox", icon: "▤" },
-    { href: "/digest", label: "Weekly digest", icon: "▥" },
-    { href: "/trust-audit", label: "Trust audit", icon: "✓" },
+  { label: "Intelligence", items: [
+    { href: "/prediction", label: "Anomaly Prediction", icon: Sparkles },
+    { href: "/analytics", label: "Deep Analytics", icon: LineChart },
+    { href: "/model", label: "Model Drift", icon: Workflow },
+    { href: "/since-calibration", label: "Since Calibration", icon: History },
+    { href: "/sandbox", label: "Threshold Sandbox", icon: GitCompare },
+    { href: "/digest", label: "Shift Digest", icon: FileText },
+    { href: "/trust-audit", label: "Trust Audit", icon: CheckCircle2 },
   ]},
-  { label: "Manage", items: [
-    { href: "/device", label: "Device & machine", icon: "▦" },
-    { href: "/calibration", label: "Sensor calibration", icon: "⚙" },
-    { href: "/deployments", label: "Deployments", icon: "↑" },
-    { href: "/notifications", label: "Notifications", icon: "🔔" },
-    { href: "/access", label: "Access", icon: "◐", operatorOnly: true },
+  { label: "Operations", items: [
+    { href: "/device", label: "Asset Registry", icon: Box },
+    { href: "/calibration", label: "Sensor Calibration", icon: Settings2 },
+    { href: "/deployments", label: "Edge Deployments", icon: Rocket },
+    { href: "/notifications", label: "Routing Rules", icon: Bell },
+    { href: "/access", label: "Access Control", icon: Shield, operatorOnly: true },
   ]},
   { label: "", items: [
-    { href: "/settings", label: "Settings", icon: "⚙" },
-    { href: "/help", label: "Help", icon: "?" },
+    { href: "/settings", label: "System Config", icon: Settings },
+    { href: "/help", label: "Documentation", icon: HelpCircle },
   ]},
 ];
 
@@ -40,38 +43,62 @@ export function Sidebar() {
   const isOperator = useIsOperator();
 
   return (
-    <aside className="w-14 md:w-56 shrink-0 border-r border-white/5 glass p-3 overflow-hidden">
-      <div className="mb-5 flex items-center gap-2 px-2 py-1.5 text-lg font-bold">
-        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-calm shadow-[0_0_15px_var(--calm)] animate-pulse" />
-        <span className="hidden md:inline tracking-widest text-glow text-white">REZON</span>
-      </div>
-      {NAV_GROUPS.map((group) => (
-        <div key={group.label || "utility"}>
-          {group.label && (
-            <div className="hidden md:block px-2 pb-1.5 pt-3 text-[10.5px] uppercase tracking-wide text-text-3">
-              {group.label}
-            </div>
-          )}
-          {group.items
-            .filter((item) => !item.operatorOnly || isOperator)  // UX-only filter —
-                                                                     // real enforcement
-                                                                     // is middleware (Session 11)
-            .map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] mb-0.5 ${
-                  pathname === item.href
-                    ? "bg-calm-bg text-calm"
-                    : "text-text-2 hover:bg-surface-2 hover:text-text"
-                }`}
-              >
-                <span className="shrink-0">{item.icon}</span>
-                <span className="hidden md:inline">{item.label}</span>
-              </Link>
-            ))}
+    <aside className="w-64 shrink-0 border-r border-border/50 bg-[#0B0D14]/80 backdrop-blur-3xl overflow-y-auto h-screen flex flex-col hide-scrollbar">
+      <div className="sticky top-0 z-10 bg-gradient-to-b from-[#0B0D14] to-transparent pt-6 pb-4 px-6 flex items-center gap-3">
+        <div className="relative">
+          <div className="absolute inset-0 bg-calm blur-md opacity-40 animate-pulse" />
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-calm to-blue-600 flex items-center justify-center relative z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+            <Activity className="w-5 h-5 text-black" />
+          </div>
         </div>
-      ))}
+        <div>
+          <h1 className="tracking-widest text-white font-black text-lg">REZON</h1>
+          <p className="text-[9px] uppercase text-calm tracking-[0.2em] font-semibold">Command Center</p>
+        </div>
+      </div>
+
+      <div className="px-3 pb-6 flex-1">
+        {NAV_GROUPS.map((group, idx) => (
+          <div key={group.label || "utility"} className={idx !== 0 ? "mt-6" : ""}>
+            {group.label && (
+              <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-text-3">
+                {group.label}
+              </div>
+            )}
+            <div className="space-y-1">
+              {group.items
+                .filter((item) => !item.operatorOnly || isOperator)
+                .map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-gradient-to-r from-calm/20 to-transparent text-white border-l-2 border-calm shadow-[inset_20px_0_20px_-20px_rgba(6,182,212,0.3)]"
+                          : "text-text-2 hover:text-white hover:bg-surface border-l-2 border-transparent"
+                      }`}
+                    >
+                      <item.icon className={`w-4 h-4 transition-colors ${isActive ? 'text-calm' : 'text-text-3 group-hover:text-calm/70'}`} />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="p-4 mt-auto border-t border-border/50 bg-surface-2/30 backdrop-blur-sm">
+        <div className="flex items-center gap-3 bg-surface-3 p-3 rounded-xl border border-border/50">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse" />
+          <div className="flex flex-col">
+            <span className="text-xs text-white font-semibold">Systems Nominal</span>
+            <span className="text-[10px] text-text-3">All 5 Agents Online</span>
+          </div>
+        </div>
+      </div>
     </aside>
   );
 }

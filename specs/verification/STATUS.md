@@ -4,8 +4,8 @@
 ---
 
 ## Phase
-**Phase D (Cloud & Mock Testing) COMPLETE.** 
-(Hardware sessions 02-09 deferred). All software implementation phases finished!
+**Virtual Simulation Phase: Simulator Scaffolding** 
+(Hardware sessions 02-09 superseded by `DEC-073`). Building the Stateful Virtual Edge Simulator to replace the ESP32.
 
 ## What's actually built
 Repository initialized on local Git. Complete monorepo directory scaffolding created. Current-facts verified, GPIO pin-mapping documented.
@@ -27,4 +27,4 @@ Not started. Cannot start until Phase 1 completes (all 5 modalities wired + firm
 - *(No open items)*
 
 ## Last updated
-2026-08-18 (End of Session 34)
+2026-10-02 (DEC-073 Authorized Virtual Simulator)

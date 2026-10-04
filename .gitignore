@@ -1,4 +1,4 @@
-﻿# Secrets
+# Secrets
 .env
 *.key
 *.pem
@@ -20,7 +20,12 @@ frontend/.env.production
 training/data/raw/
 training/data/processed/
 training/data/held_out/
-training/models/
+training/models/*
+!training/models/*.pth
+!training/models/*.pt
+!training/models/*.json
+!training/models/*.h
+!training/models/*.png
 *.tflite
 *.h5
 *.pb

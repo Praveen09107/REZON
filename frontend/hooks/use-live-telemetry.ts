@@ -1,43 +1,55 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
-import { createClient } from "@/lib/supabase/client";
-import { getLatestTelemetry, type TelemetryRow } from "@/lib/api-client";
+import { useEffect, useState } from "react";
+import type { TelemetryRow } from "@/lib/api-client";
 
 interface LiveTelemetryState {
   data: TelemetryRow | null;
-  lastUpdateMs: number | null;   // for the resilience wrapper (FILE 5)
+  lastUpdateMs: number | null;
   connected: boolean;
 }
 
-// Tier 1 (Frontend Spec §6): Home, Sensor Streams, Safety Chain Monitor.
-// Push-based, matching the ~1s device fusion cycle — no polling delay.
 export function useLiveTelemetry(): LiveTelemetryState {
   const [state, setState] = useState<LiveTelemetryState>({
     data: null, lastUpdateMs: null, connected: false,
   });
-  const supabase = useRef(createClient());
 
   useEffect(() => {
-    // Temporary bypass: Mock data so the dashboard works without Supabase
-    setState({
-      data: {
-        id: "mock-id",
-        device_id: "mock-device",
-        seq_number: 1,
-        recorded_at: new Date().toISOString(),
-        audio_score: 0.1,
-        vibration_score: 0.2,
-        env_score: 0.05,
-        gas_score: 0.3,
-        current_score: 0.15,
-        env_temp: 24,
-        env_humidity: 45,
-        env_pressure: 1013,
-        fused_score: 0.22,
-      },
-      lastUpdateMs: Date.now(),
-      connected: true,
-    });
+    let isMounted = true;
+    let lastSeq = -1;
+
+    const fetchLatest = async () => {
+      try {
+        const res = await fetch('/api/telemetry?mode=latest');
+        if (!res.ok) throw new Error('Network err');
+        
+        const json = await res.json();
+        if (json.success && json.data && isMounted) {
+          // Only update state if the seq_number actually changed (real-time stream)
+          if (json.data.seq_number !== lastSeq) {
+            lastSeq = json.data.seq_number;
+            setState({
+              data: json.data,
+              lastUpdateMs: Date.now(),
+              connected: true
+            });
+          }
+        }
+      } catch (err) {
+        if (isMounted) {
+          setState(s => ({ ...s, connected: false }));
+        }
+      }
+    };
+
+    // Fetch immediately
+    fetchLatest();
+
+    // Poll every 1 second matching the Simulator's 1Hz tick
+    const interval = setInterval(fetchLatest, 1000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   return state;

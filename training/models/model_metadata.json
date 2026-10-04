@@ -1,0 +1,83 @@
+{
+  "model_name": "REZON-Audio-IDNN-v1",
+  "architecture": "Interpolative Deep Neural Network (Bottleneck Autoencoder)",
+  "input_dim": 240,
+  "bottleneck_dim": 16,
+  "output_dim": 40,
+  "parameter_count": 54712,
+  "training_epochs": 30,
+  "metrics": {
+    "held_out_auc": 0.9998806693969509,
+    "precision": 0.9956942949407965,
+    "recall": 0.9978425026968716,
+    "f1_score": 0.9967672413793104,
+    "baseline_normal_error_mean": 0.19204020424942883,
+    "baseline_normal_error_std": 0.06108133120661807,
+    "decision_threshold_3sigma": 0.375284197869283
+  },
+  "sensor_baselines": {
+    "vibration_mpu6050": {
+      "band_low_0_10hz": {
+        "mean": 0.04010484610466315,
+        "std": 0.008002954086108858
+      },
+      "band_mid_10_50hz": {
+        "mean": 0.0603027118325393,
+        "std": 0.012349201873242751
+      },
+      "band_high_50_100hz": {
+        "mean": 0.03012274804454112,
+        "std": 0.006002520800546732
+      },
+      "sampling_rate_hz": 250,
+      "fft_window": 128
+    },
+    "environment_dht22_bmp280": {
+      "temperature_c": {
+        "mean": 22.436658361755836,
+        "std": 0.5795785794553898
+      },
+      "humidity_pct": {
+        "mean": 46.1135656965252,
+        "std": 1.9109321262801586
+      },
+      "pressure_hpa": {
+        "mean": 1013.25,
+        "std": 1.2
+      }
+    },
+    "gas_mq135": {
+      "raw_baseline_ppm": {
+        "mean": 85.25586366753151,
+        "std": 4.195478167089061
+      },
+      "compensation": {
+        "T_ref": 22.436658361755836,
+        "H_ref": 46.1135656965252,
+        "coeff_a_temp": -0.015,
+        "coeff_b_humidity": 0.008
+      }
+    },
+    "current_acs712": {
+      "nominal_amps": {
+        "mean": 0.8489393126234399,
+        "std": 0.0485399950266646
+      },
+      "ema_alpha": 0.2,
+      "overcurrent_threshold_amps": 2.3770300753456315
+    },
+    "decision_fusion": {
+      "weights": {
+        "audio": 0.25,
+        "vibration": 0.25,
+        "gas": 0.2,
+        "current": 0.2,
+        "environment": 0.1
+      },
+      "alert_threshold": 0.65,
+      "actuation_threshold": 0.85,
+      "corroboration_min_channels": 2
+    }
+  },
+  "exported_at": "2026-10-04T13:51:43Z"
+}

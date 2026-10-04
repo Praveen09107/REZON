@@ -35,14 +35,14 @@ export async function proxy(request: NextRequest) {
     // return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // /access requires operator role — checked here for immediate UX
-  // redirect, real enforcement is still Backend Spec §2's RLS on the
-  // underlying data operations this page would trigger.
+  // /access requires operator role
   if (path.startsWith("/access")) {
-    const { data: profile } = await supabase
-      .from("profiles").select("role").eq("user_id", session.user.id).single();
-    if (profile?.role !== "operator") {
-      return NextResponse.redirect(new URL("/", request.url));
+    if (session?.user) {
+      const { data: profile } = await supabase
+        .from("profiles").select("role").eq("user_id", session.user.id).single();
+      if (profile?.role !== "operator") {
+        return NextResponse.redirect(new URL("/", request.url));
+      }
     }
   }
 
